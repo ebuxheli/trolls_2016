@@ -1,0 +1,15 @@
+---
+title: "Day One"
+author: "Enxhi Buxheli"
+date: 2018-10-19
+categories: ["R"]
+tags: ["R Markdown", "plot", "regression"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+
+library(tidyverse)
+```
+
+# Content
