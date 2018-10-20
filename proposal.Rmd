@@ -1,0 +1,38 @@
+---
+title: "Final Project Proposal"
+author: "Enxhi Buxheli"
+date: "10/19/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+library(tidyverse)
+library(janitor)
+```
+
+### Government Revenue and Spending and its Effect of Quality of Living
+I will be looking into data related to government spending and taxation and
+its effect on the quality of life for its citizens. The goal is to use global 
+and national tax data among other datasets in order to assess this relation.
+Something I've noted in my initial search for data is that on a global level
+data is sparse in lesser developed countries which might lead to some changes 
+in the scope of the project and building visualizations and telling stories 
+with the data.
+
+Below is just some code that shows I have loaded some data and have created a 
+summary statistic from this data.
+
+```{r}
+# loading in World Bank tax data 
+# [https://data.worldbank.org/indicator/GC.TAX.TOTL.GD.ZS]
+
+tax_global <- read_csv("global_taxdata.csv", skip = 4) %>% 
+  clean_names() %>% 
+  select(everything(), -indicator_code, -indicator_name, -x63)
+
+# count of # of countries in dataset
+tax_global %>% 
+  summarise(n())
+```
