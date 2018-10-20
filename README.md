@@ -1,2 +1,2 @@
-# final_project
-GOV1005: Data, final project repo
+## GOV 1005: Data
+### Final Project
