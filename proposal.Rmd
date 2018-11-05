@@ -10,6 +10,10 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 library(tidyverse)
 library(janitor)
+library(fs)
+library(ggplot2)
+library(readr)
+library(tidyr)
 ```
 
 ### Government Revenue and Spending and its Effect of Quality of Living
@@ -30,7 +34,22 @@ summary statistic from this data.
 
 tax_global <- read_csv("global_taxdata.csv", skip = 4) %>% 
   clean_names() %>% 
-  select(everything(), -indicator_code, -indicator_name, -x63)
+  select(everything(), -indicator_code, -indicator_name, -x63) %>% 
+  gather(year, tax_rate, x1960:x2017) %>% 
+  group_by(country_name) %>% 
+  mutate(year = parse_number(year),
+         tax_rate = as.numeric(as.character(tax_rate)))
+
+# ensuring that the data is the correct type
+glimpse(tax_global)
+
+# saving the data for use in the shiny app
+write_rds(tax_global, "taxes.rds")
+
+# ensuring plotting functionality works 
+tax_global %>% 
+  filter(country_name == "Albania") %>% 
+  ggplot(aes(x = year, y = tax_rate)) + geom_point()
 
 # count of # of countries in dataset
 tax_global %>% 

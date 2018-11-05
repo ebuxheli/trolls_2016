@@ -1,0 +1,12 @@
+name: tax_data
+title: tax_data
+username:
+account: enxhi
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 552572
+bundleId: 1681987
+url: https://enxhi.shinyapps.io/tax_data/
+when: 1541385980.95106
+asMultiple: FALSE
+asStatic: FALSE
