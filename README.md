@@ -1,9 +1,14 @@
-## GOV 1005: Data
-### Russian Trolls in the 2016 US Election
+## Russian Trolls in the 2016 US Election
 
-The scope of this project will be to analyze close to 3 million tweets that are associated with the Internet Research Agency which is a known Russian agency that has been tasked with interfering in US politics. 
+This project is an analysis of nearly 3 million tweets associated with the Internet Research Agency, a known Russian agency tasked with interfering in US politics. 
 
-I will be taking a closer look at tweets in the timeframe surrounding the 2016 election to see trends in tweet activity by varying types of accounts by this agency. For example, looking at right trolls - charged with creating disinformation to promote the election of Trump - and left trolls - charged with dividing the Democratic party between Bernie Sanders and Hillary Clinton and creating a general sense of distrust within the party - to see if they had an impactful effect on this election.
+Tweets analyzed here are relevant for the timeframe surrounding the 2016 US Presidential Election. I looked to find trends in tweet activity over time, but also sought out to tell some of the stories the data held. For example, I looked at the frequency of the appearance of specific words or phrases within the tweets and noted any relevant events that would've catalyzed an increase in frequency of it during the election time perion.
+
+Here I've provided background information which I feel is necessary to understand the analysis I have run:
+* Right trolls - charged with creating disinformation to promote the election of Trump and the GOP
+* Left trolls -  charged with dividing the Democratic party between Bernie Sanders and Hillary Clinton and creating a general distrust towards the party 
+* "Fake News" - a phrase first used by President Trump on Twitter in January 2017 to propagate disinformation and distrust
 
 
 Data Source: <a href="https://github.com/fivethirtyeight/russian-troll-tweets/">FiveThirtyEight and Clemson University</a>
+Article: <a href="https://fivethirtyeight.com/features/why-were-sharing-3-million-russian-troll-tweets/">FiveThirtyEight</a>
