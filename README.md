@@ -10,5 +10,4 @@ Here I've provided background information which I feel is necessary to understan
 * "Fake News" - a phrase first used by President Trump on Twitter in January 2017 to propagate disinformation and distrust
 
 
-Data Source: <a href="https://github.com/fivethirtyeight/russian-troll-tweets/">FiveThirtyEight and Clemson University</a>
-Article: <a href="https://fivethirtyeight.com/features/why-were-sharing-3-million-russian-troll-tweets/">FiveThirtyEight</a>
+Data Source: <a href="https://github.com/fivethirtyeight/russian-troll-tweets/">FiveThirtyEight and Clemson University</a><br></br>Article: <a href="https://fivethirtyeight.com/features/why-were-sharing-3-million-russian-troll-tweets/">FiveThirtyEight</a>
