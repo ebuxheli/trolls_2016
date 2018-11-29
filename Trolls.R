@@ -12,7 +12,7 @@
 # Twitter. I will look to see if there is any indication of trends amongst the 
 # different types of trolls on Twitter created for this Presidential Election.
 # 
-# mru: Enxhi Buxheli 11/29/2018 - initial data dump
+# mru: Enxhi Buxheli 11/29/2018 - plots created and data dive
 
 
 # Attaching libraries
