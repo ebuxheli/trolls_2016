@@ -15,6 +15,7 @@
 # mru: Enxhi Buxheli 12/3/2018 
 #   + added comments to data
 #   + narrowed down selected variables
+#   + plotted daily troll postings
 
 
 # Attaching libraries
@@ -108,8 +109,9 @@ troll_clean %>%
 ## Replicating some of the graphs found in the FiveThirtyEight article.
 ## https://fivethirtyeight.com/features/why-were-sharing-3-million-russian-troll-tweets/
 troll_clean %>%
-  count(day_of = as.Date(publish_date, format = "%d")) %>%
+  count(day_of = as.Date(publish_date, format = "%d")) %>% 
+  filter(day_of >= as.Date("2015-01-01") & day_of <= as.Date("2017-12-31")) %>% 
   ggplot(aes(x = day_of, y = n)) + 
-    geom_col()
+    geom_col() 
   
   
