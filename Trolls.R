@@ -106,12 +106,21 @@ troll_clean %>%
   count(quarter_date = quarter(publish_date, with_year = TRUE)) %>% 
   ggplot(aes(x = quarter_date, y = n)) + geom_point() + geom_smooth() + scale_y_log10() 
 
+
 ## Replicating some of the graphs found in the FiveThirtyEight article.
 ## https://fivethirtyeight.com/features/why-were-sharing-3-million-russian-troll-tweets/
+#
+# I chose the date range for this histogram to be from June 16th, 2015 to January 20th, 2018. 
+# June 16th, 2015 is when Trump first announced his candidacy for the US 2016 Presidential
+# election and I felt that it'd be best to show that as the start of the Russian tweets from
+# this point in time until 1 year after he took the oath for office (on January 20th, 2017).
+# This helps provide a clearer picture of how the Russian Twitter trolls worked before and
+# after Trump's election.
+
 troll_clean %>%
-  count(day_of = as.Date(publish_date, format = "%d")) %>% 
-  filter(day_of >= as.Date("2015-01-01") & day_of <= as.Date("2017-12-31")) %>% 
-  ggplot(aes(x = day_of, y = n)) + 
-    geom_col() 
+  mutate(day_of = as.Date(publish_date, format = "%d")) %>% 
+  filter(day_of >= as.Date("2015-06-16") & day_of <= as.Date("2018-01-20")) %>% 
+  ggplot(aes(day_of)) + 
+    geom_histogram(binwidth = 1) 
   
   
