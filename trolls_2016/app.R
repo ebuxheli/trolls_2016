@@ -114,11 +114,14 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                        # Sidebar with a slider input for number of bins 
                        sidebarLayout(
                          sidebarPanel(
-                           sliderInput("bins",
-                                       "Number of bins:",
-                                       min = 1,
-                                       max = 50,
-                                       value = 30)
+                           selectInput(inputId = "phrase", 
+                                       label = "Select a Trump Phrase:",
+                                       choices = c("Fake News" = "fakenews|fake news",
+                                                   "Crooked Hillary" = "crooked hillary|crookedhillary",
+                                                   "Make America Great Again" = "maga|make america great again",
+                                                   "Failing New York Times" = "failing new york times|nytimes",
+                                                   "Trump" = "trump"), 
+                                       selected = "Fake News")
                          ),
                          
                          # Show a plot of the generated distribution
@@ -155,12 +158,17 @@ ui <- fluidPage(theme = shinytheme("flatly"),
 server <- function(input, output) {
    
    output$distPlot <- renderPlot({
-      # generate bins based on input$bins from ui.R
-      x    <- faithful[, 2] 
-      bins <- seq(min(x), max(x), length.out = input$bins + 1)
-      
-      # draw the histogram with the specified number of bins
-      hist(x, breaks = bins, col = 'darkgray', border = 'white')
+     # Looking at some cool phrases
+     tweets_daily %>% 
+       filter(str_detect(tolower(content), (input$phrase))) %>% 
+       ggplot(aes(day_of)) + 
+       geom_histogram(binwidth = 1, color = "#DD7848") +
+       labs(title = "Trump Tweets by Day",
+            subtitle = "Usage of different phrases coined or made popular by Trump during the 2016 Election",
+            x = "Date",
+            y = "# of Tweets") +
+       custom_theme() +
+       scale_y_continuous(label = ff_denom())
    })
    
    # Table displaying number of tweets daily by trolls
