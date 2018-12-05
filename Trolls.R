@@ -87,7 +87,7 @@ troll_clean <- trolls %>%
   select(author, content, followers, following,
          account_type, account_category, publish_date, updates,
          external_author_id, region) %>%
-  mutate(publish_date = mdy_hm(publish_date))
+  mutate(day_of = as.Date(mdy_hm(publish_date), format = "%d"))
 
 
 # Plotting the number of active Twitter accounts associated with trolls
@@ -169,8 +169,8 @@ custom_theme <- function() {
 # 
 # Exporting the only data needed for the histogram to be able to export it to GitHub.
 tweets_daily <- troll_clean %>% 
-  transmute(day_of = as.Date(publish_date, format = "%d")) %>% 
+  select(day_of) %>% 
   filter(day_of >= as.Date("2015-06-16") & day_of <= as.Date("2018-01-20"))
 
-write_rds(tweets_daily, "tweets_daily.rds")  
+write_rds(tweets_daily, "trolls_2016/tweets_daily.rds")  
   
