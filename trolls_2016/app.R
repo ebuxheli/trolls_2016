@@ -116,17 +116,17 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                          sidebarPanel(
                            selectInput(inputId = "phrase", 
                                        label = "Select a Trump Phrase:",
-                                       choices = c("Fake News" = "fakenews|fake news",
-                                                   "Crooked Hillary" = "crooked hillary|crookedhillary",
-                                                   "Make America Great Again" = "maga|make america great again",
-                                                   "Failing New York Times" = "failing new york times|nytimes",
+                                       choices = c("Fake News" = "fake_news",
+                                                   "Crooked Hillary" = "hillary",
+                                                   "Make America Great Again" = "maga",
+                                                   "Failing New York Times" = "nytimes",
                                                    "Trump" = "trump"), 
                                        selected = "Fake News")
                          ),
                          
-                         # Show a plot of the generated distribution
+                         # Show the twitter images
                          mainPanel(
-                           plotOutput("distPlot")
+                           imageOutput("plot3")
                          )
                        )
               ),
@@ -196,6 +196,14 @@ server <- function(input, output) {
        scale_y_continuous(label = ff_denom())
    })
    
+   # getting twitter impages to show
+   output$plot3 <- renderImage({
+     # When input$n is 1, filename is ./images/image1.jpeg
+     filename <- normalizePath(file.path(paste0(input$phrase, '.png')))
+     
+     # Return a list containing the filename
+     list(src = filename)
+   }, deleteFile = FALSE)
 }
 
 # Run the application 
