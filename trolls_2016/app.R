@@ -10,37 +10,46 @@
 # app displays plots that help tell some of the interesting stories this data holds.
 # 
 # mru: Enxhi Buxheli 12/5/2018 
-#   + created app
+#   + added panels
 
-
+# Attaching libraries
 library(shiny)
+library(shinythemes)
 library(dplyr)
 library(tidyverse)
 library(ggplot2)
 library(plotly)
+                
 
 # Define UI for application that draws a histogram
-ui <- fluidPage(
+ui <- fluidPage(theme = shinytheme("flatly"),
    
    # Application title
-   titlePanel("Old Faithful Geyser Data"),
+   navbarPage("2016 US Presidential Election: Russian Trolls on Twitter",
    
-   # Sidebar with a slider input for number of bins 
-   sidebarLayout(
-      sidebarPanel(
-         sliderInput("bins",
-                     "Number of bins:",
-                     min = 1,
-                     max = 50,
-                     value = 30)
-      ),
-      
-      # Show a plot of the generated distribution
-      mainPanel(
-         plotOutput("distPlot")
-      )
+              tabPanel("Graph",
+                       
+                       # Sidebar with a slider input for number of bins 
+
+                       sidebarLayout(
+                         sidebarPanel(
+                           sliderInput("bins",
+                                       "Number of bins:",
+                                       min = 1,
+                                       max = 50,
+                                       value = 30)
+                           ),
+                         
+                           # Show a plot of the generated distribution
+                         
+                           mainPanel(
+                            plotOutput("distPlot")
+                         )
+                       )
+              )
    )
 )
+
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
