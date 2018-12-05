@@ -25,7 +25,7 @@ library(fs)
 library(stringr)
 library(ggplot2)
 library(lubridate)
-
+library(RColorBrewer)
 
 # Building a "not in" function to poke around the data.
 # You may or may not see it in use in this version of the project
@@ -107,6 +107,53 @@ troll_clean %>%
   ggplot(aes(x = quarter_date, y = n)) + geom_point() + geom_smooth() + scale_y_log10() 
 
 
+### Function that creates a pretty theme for the histogram I will be displaying
+fte_theme <- function() {
+  
+  # Generate the colors for the chart procedurally with RColorBrewer
+  
+  palette <- brewer.pal("Greys", n=9)
+  color.background = palette[2]
+  color.grid.major = palette[3]
+  color.axis.text = palette[6]
+  color.axis.title = palette[7]
+  color.title = palette[9]
+  
+  # Begin construction of chart
+  
+  theme_bw(base_size=9) +
+    
+    # Set the entire chart region to a light gray color
+    
+    theme(panel.background=element_rect(fill=color.background, color=color.background)) +
+    theme(plot.background=element_rect(fill=color.background, color=color.background)) +
+    theme(panel.border=element_rect(color=color.background)) +
+    
+    # Format the grid
+    
+    theme(panel.grid.major=element_line(color=color.grid.major,size=.25)) +
+    theme(panel.grid.minor=element_blank()) +
+    theme(axis.ticks=element_blank()) +
+    
+    # Format the legend, but hide by default
+    
+    theme(legend.position="none") +
+    theme(legend.background = element_rect(fill=color.background)) +
+    theme(legend.text = element_text(size=7,color=color.axis.title)) +
+    
+    # Set title and axis labels, and format these and tick marks
+    
+    theme(plot.title=element_text(color=color.title, size=10, vjust=1.25)) +
+    theme(axis.text.x=element_text(size=7,color=color.axis.text)) +
+    theme(axis.text.y=element_text(size=7,color=color.axis.text)) +
+    theme(axis.title.x=element_text(size=8,color=color.axis.title, vjust=0)) +
+    theme(axis.title.y=element_text(size=8,color=color.axis.title, vjust=1.25)) +
+    
+    # Plot margins
+    
+    theme(plot.margin = unit(c(0.35, 0.2, 0.3, 0.35), "cm"))
+}
+
 ## Replicating some of the graphs found in the FiveThirtyEight article.
 ## https://fivethirtyeight.com/features/why-were-sharing-3-million-russian-troll-tweets/
 #
@@ -121,6 +168,11 @@ troll_clean %>%
   mutate(day_of = as.Date(publish_date, format = "%d")) %>% 
   filter(day_of >= as.Date("2015-06-16") & day_of <= as.Date("2018-01-20")) %>% 
   ggplot(aes(day_of)) + 
-    geom_histogram(binwidth = 1) 
+    geom_histogram(binwidth = 1) +
+    labs(title = "Russian Troll Tweets by Day",
+         subtitle = "Nearly 3 million tweets sent by trolls associate with the Internet Research Agency",
+         x = "Year",
+         y = "# of Tweets") +
+    fte_theme()
   
   
