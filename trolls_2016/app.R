@@ -10,7 +10,7 @@
 # app displays plots that help tell some of the interesting stories this data holds.
 # 
 # mru: Enxhi Buxheli 12/5/2018 
-#   + added panels
+#   + tabs to be filled in
 
 # Attaching libraries
 library(shiny)
@@ -26,11 +26,11 @@ ui <- fluidPage(theme = shinytheme("flatly"),
    
    # Application title
    navbarPage("2016 US Presidential Election: Russian Trolls on Twitter",
-   
-              tabPanel("Graph",
+              
+              # Tab with the initial histogram
+              tabPanel("Trolls by Day",
                        
                        # Sidebar with a slider input for number of bins 
-
                        sidebarLayout(
                          sidebarPanel(
                            sliderInput("bins",
@@ -41,9 +41,47 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                            ),
                          
                            # Show a plot of the generated distribution
-                         
                            mainPanel(
                             plotOutput("distPlot")
+                         )
+                       )
+              ),
+              # Tab with the initial histogram
+              tabPanel("Twitter Stories",
+                       
+                       # Sidebar with a slider input for number of bins 
+                       sidebarLayout(
+                         sidebarPanel(
+                           sliderInput("bins",
+                                       "Number of bins:",
+                                       min = 1,
+                                       max = 50,
+                                       value = 30)
+                         ),
+                         
+                         # Show a plot of the generated distribution
+                         mainPanel(
+                           #plotOutput("distPlot")
+                         )
+                       )
+              ),
+              
+              # Tab with the initial histogram
+              tabPanel("Remarks",
+                       
+                       # Sidebar with a slider input for number of bins 
+                       sidebarLayout(
+                         sidebarPanel(
+                           sliderInput("bins",
+                                       "Number of bins:",
+                                       min = 1,
+                                       max = 50,
+                                       value = 30)
+                         ),
+                         
+                         # Show a plot of the generated distribution
+                         mainPanel(
+                           #plotOutput("distPlot")
                          )
                        )
               )
