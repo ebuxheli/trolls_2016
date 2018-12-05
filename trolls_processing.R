@@ -170,7 +170,10 @@ plot_phrase("maga", "maga|make america great again")
 plot_phrase("nytimes", "failing new york times|nytimes")
 plot_phrase("trump", "trump")
 
-
+troll_clean %>% 
+  filter(str_detect(tolower(content), (paste("fakenews|fake news")))) %>%
+  count(day_of) %>% 
+  arrange(desc(n))
 # I chose the date range for this dataset to be from June 16th, 2015 to January 20th, 2018. 
 # June 16th, 2015 is when Trump first announced his candidacy for the US 2016 Presidential
 # election and I felt that it'd be best to show that as the start of the Russian tweets from

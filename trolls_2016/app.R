@@ -126,27 +126,42 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                          
                          # Show the twitter images
                          mainPanel(
-                           imageOutput("plot3")
+                           imageOutput("plot3"),
+                           p("In the \"Fake News\" tweets, we see a sudden spike in November of 
+                             2017 which was when investigations in the Russia probe became more intense."),
+                           br(),
+                           p("In the \"Make America Great Again\" tweets, we see a sudden spike 
+                             near the end of 2017. Upon closer look at events during this time, this 
+                             was a result of the violence and WhiteSupremacists in Charlottesville that 
+                             caught the nation's attention.")
                          )
                        )
               ),
               
               # Tab with the initial histogram
-              tabPanel("Remarks",
+              tabPanel("Post-Mortem as of 12/5/2018",
                        
                        # Sidebar with a slider input for number of bins 
                        sidebarLayout(
-                         sidebarPanel(
-                           sliderInput("bins",
-                                       "Number of bins:",
-                                       min = 1,
-                                       max = 50,
-                                       value = 30)
-                         ),
-                         
-                         # Show a plot of the generated distribution
+                         sidebarPanel(),
+                         # Describes my findings and links to articles
                          mainPanel(
-                           #plotOutput("distPlot")
+                           p("What I've found is that the Tweets put out by accounts associated with 
+                             the Russian trolls in the Internet Research Agency are reflective of some 
+                             of the events that were going on at the time of their publishing. I have 
+                             not yet gotten to explore the data in as much depth as I would like, but I 
+                             plan on looking at more variables. One of the challenges with such a large 
+                             dataset (almost 3 million entries with content of tweets included made for 
+                             massive files)."),
+                           br(),
+                           a("Here ", href = "https://fivethirtyeight.com/features/why-were-sharing-3-million-russian-troll-tweets/"),
+                           p("is a link to the original article published in collaboration with Clemson 
+                             University and FiveThirtyEight from which I drew inspiration. I plan on 
+                             making a blogdown that helps showcase the data in a better way. Additionally, "),
+                           br(),
+                           a("Here ", href = "https://github.com/fivethirtyeight/russian-troll-tweets/"),
+                           p("is a link to the original data set that I was working from compiled by FiveThirtyEight and Clemson.")
+                         
                          )
                        )
               )
