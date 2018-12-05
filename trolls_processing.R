@@ -161,7 +161,7 @@ plot_phrase <- function(name, phrase){
     custom_theme() +
     scale_y_continuous(label = ff_denom())
   
-  ggsave(paste0("trolls_2016/", name, ".png"), width = 9, height = 4.5, plot = last_plot(), device = "png", dpi = "retina")
+  ggsave(paste0("trolls_2016/", name, ".png"), width = 9, height = 4.5, plot = last_plot(), device = "png", dpi = "screen")
 }
 # creating output of pictures into the shiny app directory
 plot_phrase("fake_news", "fakenews|fake news")
