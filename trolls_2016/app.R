@@ -30,7 +30,7 @@ tweets_daily <- read_rds("tweets_daily.rds")
 
 # Function that creates a pretty theme for the histogram I will be displaying
 # Credit to Max Woolf: https://minimaxir.com/2015/02/ggplot-tutorial/
-# Made some minor modifications to his original function in coloring.
+# Made some minor modifications to his original function in coloring and text.
 
 custom_theme <- function() {
   
@@ -67,11 +67,12 @@ custom_theme <- function() {
     
     # Set title and axis labels, and format these and tick marks
     
-    theme(plot.title   = element_text(color = color.title, size = 10, vjust = 1.25, face = "bold")) +
-    theme(axis.text.x  = element_text(size  = 7,color = color.axis.text)) +
-    theme(axis.text.y  = element_text(size  = 7,color = color.axis.text)) +
-    theme(axis.title.x = element_text(size  = 8,color = color.axis.title, vjust = 0)) +
-    theme(axis.title.y = element_text(size  = 8,color = color.axis.title, vjust = 1.25)) +
+    theme(plot.title   = element_text(color = color.title, size = 14, vjust = 1.25, face = "bold")) +
+    theme(plot.subtitle= element_text(color = color.title, size = 12, vjust = 1.25, face = "italic")) +
+    theme(axis.text.x  = element_text(size  = 10,color = color.axis.text)) +
+    theme(axis.text.y  = element_text(size  = 10,color = color.axis.text)) +
+    theme(axis.title.x = element_text(size  = 10,color = color.axis.title, vjust = 0)) +
+    theme(axis.title.y = element_text(size  = 10,color = color.axis.title, vjust = 1.25)) +
     
     # Plot margins
     
