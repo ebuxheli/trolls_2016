@@ -1,4 +1,4 @@
-# GOV 1005: Russian Trolls
+# Russian Trolls, pre-processing and beta
 # 
 # By: Enxhi Buxheli 
 # Date: November 28th, 2018
@@ -12,7 +12,7 @@
 # Twitter. I will look to see if there is any indication of trends amongst the 
 # different types of trolls on Twitter created for this Presidential Election.
 # 
-# mru: Enxhi Buxheli 12/4/2018 
+# mru: Enxhi Buxheli 12/5/2018 
 #   + minor spacing updates to the themes function
 
 
@@ -57,13 +57,12 @@ library(RColorBrewer)
 # # joining prompts again by storing output into an rds file
 # write_rds(troll_data, "trolls.rds")
 #
+#
 # Reading in the cleaned up data to avoid crazy run times for the above
 # lines of code that process the data for analytical use.
-# trolls <- read_rds("trolls.rds")
-#
-# NOTE: THE ABOVE STATEMENT IS NO LONGER IN USE BECAUSE I ELIMINATED VARIABLES
-# THAT WERE UNNECESSARY FOR THE SCOPE OF MY PROJECT.
-#
+
+trolls <- read_rds("trolls.rds")
+
 # Here I have selected the columns that I thought were relevant for this project.
 # I wanted to do a deeper dive into who the authors were, the content of their 
 # tweets to see if I could find any interesting trends in some specific phrases
@@ -100,17 +99,19 @@ troll_clean %>%
   count(quarter_date) %>% 
   ggplot(aes(x = quarter_date, y = nn)) + geom_point() + geom_smooth() + scale_y_log10()
 
+
 # Plotting the use of the term fake news. First tweeted by Trump in January 2017.
 # This is my first example and use of telling a story with the data using phrases.
+
 troll_clean %>% 
   filter(str_detect(tolower(content), ("fake news|fakenews"))) %>% 
   count(quarter_date = quarter(publish_date, with_year = TRUE)) %>% 
   ggplot(aes(x = quarter_date, y = n)) + geom_point() + geom_smooth() + scale_y_log10() 
 
 
-### Function that creates a pretty theme for the histogram I will be displaying
-### Credit to Max Woolf: https://minimaxir.com/2015/02/ggplot-tutorial/
-### Made some minor modifications to his original function in coloring.
+# Function that creates a pretty theme for the histogram I will be displaying
+# Credit to Max Woolf: https://minimaxir.com/2015/02/ggplot-tutorial/
+# Made some minor modifications to his original function in coloring.
 
 custom_theme <- function() {
   
@@ -159,26 +160,17 @@ custom_theme <- function() {
 }
 
 
-## Replicating some of the graphs found in the FiveThirtyEight article.
-## https://fivethirtyeight.com/features/why-were-sharing-3-million-russian-troll-tweets/
-#
-# I chose the date range for this histogram to be from June 16th, 2015 to January 20th, 2018. 
+# I chose the date range for this dataset to be from June 16th, 2015 to January 20th, 2018. 
 # June 16th, 2015 is when Trump first announced his candidacy for the US 2016 Presidential
 # election and I felt that it'd be best to show that as the start of the Russian tweets from
 # this point in time until 1 year after he took the oath for office (on January 20th, 2017).
 # This helps provide a clearer picture of how the Russian Twitter trolls worked before and
-# after Trump's election. I've also d
+# after Trump's election. 
+# 
+# Exporting the only data needed for the histogram to be able to export it to GitHub.
+tweets_daily <- troll_clean %>% 
+  transmute(day_of = as.Date(publish_date, format = "%d")) %>% 
+  filter(day_of >= as.Date("2015-06-16") & day_of <= as.Date("2018-01-20"))
 
-troll_clean %>%
-  mutate(day_of = as.Date(publish_date, format = "%d")) %>% 
-  filter(day_of >= as.Date("2015-06-16") & day_of <= as.Date("2018-01-20")) %>% 
-  ggplot(aes(day_of)) + 
-    geom_histogram(binwidth = 1, color = "#DD7848") +
-    labs(title = "Russian Troll Tweets by Day",
-         subtitle = "Nearly 3 million tweets sent by trolls associate with the Internet Research Agency",
-         x = "Year",
-         y = "# of Tweets") +
-    custom_theme() +
-    scale_y_continuous(label = ff_denom())
-  
+write_rds(tweets_daily, "tweets_daily.rds")  
   
