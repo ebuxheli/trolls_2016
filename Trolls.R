@@ -113,7 +113,7 @@ fte_theme <- function() {
   # Generate the colors for the chart procedurally with RColorBrewer
   
   palette <- brewer.pal("Greys", n=9)
-  color.background = palette[2]
+  color.background = "#F0F0F0"
   color.grid.major = palette[3]
   color.axis.text = palette[6]
   color.axis.title = palette[7]
@@ -168,7 +168,7 @@ troll_clean %>%
   mutate(day_of = as.Date(publish_date, format = "%d")) %>% 
   filter(day_of >= as.Date("2015-06-16") & day_of <= as.Date("2018-01-20")) %>% 
   ggplot(aes(day_of)) + 
-    geom_histogram(binwidth = 1) +
+    geom_histogram(binwidth = 1, color = "#DD7848") +
     labs(title = "Russian Troll Tweets by Day",
          subtitle = "Nearly 3 million tweets sent by trolls associate with the Internet Research Agency",
          x = "Year",
