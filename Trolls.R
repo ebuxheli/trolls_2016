@@ -12,10 +12,9 @@
 # Twitter. I will look to see if there is any indication of trends amongst the 
 # different types of trolls on Twitter created for this Presidential Election.
 # 
-# mru: Enxhi Buxheli 12/3/2018 
-#   + added comments to data
-#   + narrowed down selected variables
-#   + plotted daily troll postings
+# mru: Enxhi Buxheli 12/4/2018 
+#   + added customization to the plot styling
+#   + properly plotted the histogram to look like the fivethirtyeight article
 
 
 # Attaching libraries
@@ -100,7 +99,8 @@ troll_clean %>%
   count(quarter_date) %>% 
   ggplot(aes(x = quarter_date, y = nn)) + geom_point() + geom_smooth() + scale_y_log10()
 
-# Plotting the use of the term fake news. First tweeted by TRUMP in January 2017.
+# Plotting the use of the term fake news. First tweeted by Trump in January 2017.
+# This is my first example and use of telling a story with the data using phrases.
 troll_clean %>% 
   filter(str_detect(tolower(content), ("fake news|fakenews"))) %>% 
   count(quarter_date = quarter(publish_date, with_year = TRUE)) %>% 
@@ -108,6 +108,8 @@ troll_clean %>%
 
 
 ### Function that creates a pretty theme for the histogram I will be displaying
+### Credit to Max Woolf: https://minimaxir.com/2015/02/ggplot-tutorial/
+### Made some minor modifications to his original function in coloring.
 fte_theme <- function() {
   
   # Generate the colors for the chart procedurally with RColorBrewer
