@@ -13,8 +13,7 @@
 # different types of trolls on Twitter created for this Presidential Election.
 # 
 # mru: Enxhi Buxheli 12/4/2018 
-#   + added customization to the plot styling
-#   + properly plotted the histogram to look like the fivethirtyeight article
+#   + minor spacing updates to the themes function
 
 
 # Attaching libraries
@@ -23,6 +22,7 @@ library(dplyr)
 library(fs)
 library(stringr)
 library(ggplot2)
+library(numform)
 library(lubridate)
 library(RColorBrewer)
 
@@ -56,13 +56,14 @@ library(RColorBrewer)
 # # Making it easier to read in the data rather than running all of the
 # # joining prompts again by storing output into an rds file
 # write_rds(troll_data, "trolls.rds")
-
-
+#
 # Reading in the cleaned up data to avoid crazy run times for the above
 # lines of code that process the data for analytical use.
-trolls <- read_rds("trolls.rds")
-
-
+# trolls <- read_rds("trolls.rds")
+#
+# NOTE: THE ABOVE STATEMENT IS NO LONGER IN USE BECAUSE I ELIMINATED VARIABLES
+# THAT WERE UNNECESSARY FOR THE SCOPE OF MY PROJECT.
+#
 # Here I have selected the columns that I thought were relevant for this project.
 # I wanted to do a deeper dive into who the authors were, the content of their 
 # tweets to see if I could find any interesting trends in some specific phrases
@@ -83,10 +84,10 @@ trolls <- read_rds("trolls.rds")
 # file to upload to Github for replicability. Otherwise will have a download.file
 # statement here for the file linked from the Google Drive.
 
-troll_clean <- trolls %>% 
+troll_clean <- trolls %>%
   select(author, content, followers, following,
-         account_type, account_category, publish_date, updates,  
-         external_author_id, region) %>% 
+         account_type, account_category, publish_date, updates,
+         external_author_id, region) %>%
   mutate(publish_date = mdy_hm(publish_date))
 
 
@@ -110,51 +111,53 @@ troll_clean %>%
 ### Function that creates a pretty theme for the histogram I will be displaying
 ### Credit to Max Woolf: https://minimaxir.com/2015/02/ggplot-tutorial/
 ### Made some minor modifications to his original function in coloring.
-fte_theme <- function() {
+
+custom_theme <- function() {
   
   # Generate the colors for the chart procedurally with RColorBrewer
   
   palette <- brewer.pal("Greys", n=9)
   color.background = "#F0F0F0"
   color.grid.major = palette[3]
-  color.axis.text = palette[6]
+  color.axis.text  = palette[6]
   color.axis.title = palette[7]
-  color.title = palette[9]
+  color.title      = palette[9]
   
   # Begin construction of chart
   
-  theme_bw(base_size=9) +
+  theme_bw(base_size = 9) +
     
     # Set the entire chart region to a light gray color
     
-    theme(panel.background=element_rect(fill=color.background, color=color.background)) +
-    theme(plot.background=element_rect(fill=color.background, color=color.background)) +
-    theme(panel.border=element_rect(color=color.background)) +
+    theme(panel.background = element_rect(fill  = color.background, color = color.background)) +
+    theme(plot.background  = element_rect(fill  = color.background, color = color.background)) +
+    theme(panel.border     = element_rect(color = color.background)) +
     
     # Format the grid
     
-    theme(panel.grid.major=element_line(color=color.grid.major,size=.25)) +
-    theme(panel.grid.minor=element_blank()) +
-    theme(axis.ticks=element_blank()) +
+    theme(panel.grid.major = element_line(color = color.grid.major,size = 0.25)) +
+    theme(panel.grid.minor = element_blank()) +
+    theme(axis.ticks = element_blank()) +
     
     # Format the legend, but hide by default
     
-    theme(legend.position="none") +
-    theme(legend.background = element_rect(fill=color.background)) +
-    theme(legend.text = element_text(size=7,color=color.axis.title)) +
+    theme(legend.position = "none") +
+    theme(legend.background = element_rect(fill = color.background)) +
+    theme(legend.text = element_text(size = 7, color = color.axis.title)) +
     
     # Set title and axis labels, and format these and tick marks
     
-    theme(plot.title=element_text(color=color.title, size=10, vjust=1.25)) +
-    theme(axis.text.x=element_text(size=7,color=color.axis.text)) +
-    theme(axis.text.y=element_text(size=7,color=color.axis.text)) +
-    theme(axis.title.x=element_text(size=8,color=color.axis.title, vjust=0)) +
-    theme(axis.title.y=element_text(size=8,color=color.axis.title, vjust=1.25)) +
+    theme(plot.title   = element_text(color = color.title, size = 10, vjust = 1.25, face = "bold")) +
+    theme(axis.text.x  = element_text(size  = 7,color = color.axis.text)) +
+    theme(axis.text.y  = element_text(size  = 7,color = color.axis.text)) +
+    theme(axis.title.x = element_text(size  = 8,color = color.axis.title, vjust = 0)) +
+    theme(axis.title.y = element_text(size  = 8,color = color.axis.title, vjust = 1.25)) +
     
     # Plot margins
     
     theme(plot.margin = unit(c(0.35, 0.2, 0.3, 0.35), "cm"))
 }
+
 
 ## Replicating some of the graphs found in the FiveThirtyEight article.
 ## https://fivethirtyeight.com/features/why-were-sharing-3-million-russian-troll-tweets/
@@ -164,7 +167,7 @@ fte_theme <- function() {
 # election and I felt that it'd be best to show that as the start of the Russian tweets from
 # this point in time until 1 year after he took the oath for office (on January 20th, 2017).
 # This helps provide a clearer picture of how the Russian Twitter trolls worked before and
-# after Trump's election.
+# after Trump's election. I've also d
 
 troll_clean %>%
   mutate(day_of = as.Date(publish_date, format = "%d")) %>% 
@@ -175,6 +178,7 @@ troll_clean %>%
          subtitle = "Nearly 3 million tweets sent by trolls associate with the Internet Research Agency",
          x = "Year",
          y = "# of Tweets") +
-    fte_theme()
+    custom_theme() +
+    scale_y_continuous(label = ff_denom())
   
   
