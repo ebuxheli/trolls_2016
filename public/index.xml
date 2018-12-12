@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Russian Trolls</title>
+    <link>/</link>
+    <description>Recent content on Russian Trolls</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 09 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Trump</title>
+      <link>/2018/12/09/trump/</link>
+      <pubDate>Sun, 09 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/12/09/trump/</guid>
+      <description>knitr::include_graphics(&amp;quot;/post/trump.png&amp;quot;) </description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Hello! My name is Enxhi Buxheli and I am currently a junior at Harvard College concentrating in Physics. I am fascinated by data and all the stories that you can tell using with it. The purpose of this specific website is to tell the story of the Russian Trolls in the 2016 US Presidential Election. The data used to form these stories came from a join FiveThirtyEight and Clemson University dataset.</description>
+    </item>
+    
+    <item>
+      <title>Hello R Markdown</title>
+      <link>/2015/07/23/hello-r-markdown/</link>
+      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      
+      <guid>/2015/07/23/hello-r-markdown/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+You can embed an R code chunk like this:
+# # Adding an image of the trump file knitr::include_graphics(&amp;quot;/post/trump.png&amp;quot;) /* Ensuring that the image above dynamically fits the users screen using css. */ img { width: 100%; height: auto; } /* Ensuring that the image above dynamically fits the users screen using css.</description>
+    </item>
+    
+  </channel>
+</rss>
