@@ -73,7 +73,8 @@ custom_theme <- function() {
 }
                 
 
-# Define UI for application that draws a histogram
+# Define UI for the application that will display the histogram for the 
+# twitter data.
 ui <- fluidPage(theme = shinytheme("flatly"),
    
    # Application title
@@ -82,7 +83,7 @@ ui <- fluidPage(theme = shinytheme("flatly"),
               # Tab with the initial histogram
               tabPanel("Trolls by Day",
                        
-                       # Sidebar with a slider input for number of bins 
+                       # Sidebar with a checkbox input for the year selection
                        sidebarLayout(
                          sidebarPanel(
                            checkboxGroupInput("year", "Select a Year:",
@@ -93,7 +94,8 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                                               selected = c(2015, 2016, 2017, 2018))
                          ),
                          
-                         # Show a plot of the generated distribution
+                         # Show the daily twitter data and a small description of the data
+                         # and structuring of it.
                          mainPanel(
                            plotOutput("daily_hist"),
                            br(),
@@ -108,10 +110,10 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                        )
               ),
               
-              # Tab with the initial histogram
+              # Tab with the twitter stories
               tabPanel("Twitter Stories",
                        
-                       # Sidebar with a slider input for number of bins 
+                       # Sidebar with a dropdown input for the story selection 
                        sidebarLayout(
                          sidebarPanel(
                            selectInput(inputId = "phrase", 
@@ -131,13 +133,16 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                        )
               ),
               
-              # Tab with the initial histogram
+              # Tab with a final description of this project and a link to the
+              # new and improved site.
               tabPanel("Russian Trolls Website",
                        
-                       # Sidebar with a slider input for number of bins 
+                       # unnecessary sidebar
                        sidebarLayout(
                          sidebarPanel(),
-                         # Describes my findings and links to articles
+                         
+                         # Describes my conclusions on the data in an abbreviated way and directs
+                         # viewers to my website (which is better)
                          mainPanel(
                            p("What I've found is that the Tweets put out by accounts associated with 
                              the Russian trolls in the Internet Research Agency are reflective of some 
@@ -197,7 +202,7 @@ server <- function(input, output) {
        scale_y_continuous(label = ff_denom())
    })
    
-   # getting twitter impages to show
+   # getting twitter images to show
    output$plot3 <- renderImage({
      # When input$n is 1, filename is ./images/image1.jpeg
      filename <- normalizePath(file.path(paste0(input$phrase, '.png')))
