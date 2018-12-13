@@ -13,8 +13,8 @@
 # different types of trolls on Twitter created for this Presidential Election.
 # 
 # mru: Enxhi Buxheli 12/12/2018 
-#   + playing with twitter stories
-#   + added picture for website
+#   + cleaned up data processing
+#   + created website images
 
 
 # Attaching libraries
@@ -28,36 +28,42 @@ library(lubridate)
 library(RColorBrewer)
 
 # THE FOLLOWING IS FOR THE INITIAL FILE DOWNLOAD OF MY RUSSIAN 
-# TROLL DATA. ALL OF THE DATA IS PRESENT ON MY LOCAL MACHINE.
-# I'VE RUN THESE COMMANDS ONCE AND SAVED THEIR OUTPUT AS
-# AN RDS FILE TO SAVE ON TIME WHEN REINITIALIZING MY R
-# ENVIRONMENT. YOU WILL NOT BE ABLE TO REPLICATE THESE DATA
-# OUTPUT RESULTS BECAUSE OF THE SHEER SIZE OF THE DATA AND RDS
-# FILES. I'VE COMMENTED OUT MY PROCESS TO ENSURE THAT THIS
-# TIME CONSUMING PROCESS DOESN'T RUN EVERY TIME I MISTAKENLY
-# TRY TO RUN ALL OF MY CODE. 
-#
-# NOTE: Even advanced compression techniques couldn't bring the
-# rds file size below 100MB for GitHub uploading.
-#
-# ### Consolidating troll data 
-# # Listing all of the file names for troll data
-# files_names <- dir_ls(path = "troll_data/")
-# 
-# # Reading in all the csv files as listed by their file names
-# troll_data <- map_dfr(files_names, read_csv, .id = "source")
-# 
-# # Making it easier to read in the data rather than running all of the
-# # joining prompts again by storing output into an rds file
-# write_rds(troll_data, "trolls.rds")
-#
-#
-# Reading in the cleaned up data to avoid crazy run times for the above
-# lines of code that process the data for analytical use. 
-# UNUSED NOW WITH troll_clean BELOW
-# 
-# trolls <- read_rds("trolls.rds")
-#
+# TROLL DATA. ALL OF THE DATA IS PRESENT ON MY LOCAL MACHINE AND WAS
+# CACHED IN THE CODING PROCESS, BUT FOR REPLICABILITY HAS BEEN PLACED
+# HERE.
+
+## I created a folder for all of the twitter data that was compiled by 
+## FiveThirtyEight to be downloaded and put into. This is a bit clunky
+## and I was trying to find an easier way to download the data to make 
+## it more replicable, but ran into some troubles with google drive.
+## I would've preferrred not to have to download all of this data, 
+## but felt that this would be the best option at this point in time.
+## I will be looking to make this process more efficient and less time 
+## consuming.
+
+dir_create("troll_data")
+
+# function to download the FiveThirtyEight data from github
+tweet_download <- function(num){
+  download.file(url = paste0("https://raw.githubusercontent.com/fivethirtyeight/russian-troll-tweets/master/IRAhandle_tweets_", num, ".csv"),
+                destfile = paste0("troll_data/tweets_", num))
+}
+
+# function to download each of the 13 current files (as of 12/12/2018) from
+# the GitHub repo.
+for (i in 1:13) {
+  tweet_download(i)
+}
+
+
+### Consolidating troll data
+# Listing all of the file names for troll data
+files_names <- dir_ls(path = "troll_data/")
+
+# Reading in all the csv files as listed by their file names
+troll_data <- map_dfr(files_names, read_csv, .id = "source")
+
+
 # Here I have selected the columns that I thought were relevant for this project.
 # I wanted to do a deeper dive into who the authors were, the content of their 
 # tweets to see if I could find any interesting trends in some specific phrases
@@ -73,34 +79,14 @@ library(RColorBrewer)
 # English. Also looked to see if there were any repeat tweets from those associated 
 # with the agency (IRA) and found that post_type was also not a reliable metric 
 # because it seems that it didn't count many of the quoted and retweeted tweets.
-#
-# Considering to create an rds file that is hopefully smaller than the trolls.rds
-# file to upload to Github for replicability. Otherwise will have a download.file
-# statement here for the file linked from the Google Drive.
-# 
-# troll_clean <- trolls %>%
-#   select(author, content, followers, following,
-#          account_type, account_category, publish_date, updates,
-#          external_author_id, region) %>%
-#   mutate(day_of = as.Date(mdy_hm(publish_date), format = "%d"))
-#
-## TESTING GOOGLE DRIVE FILE DOWNLOAD
-# write_rds(troll_clean, "troll_clean.rds")
-#
-# Link to download file is here, but does not execute properly.
-# download.file(url = "http://goo.gl/1DJi4G",
-#               destfile = "troll_cleaned1.rds",
-#               mode = "wb")
-# troll_clean <- read_rds("troll_clean1.rds")
 
+troll_clean <- troll_data %>%
+  select(author, content, followers, following,
+         account_type, account_category, publish_date, updates,
+         external_author_id, region) %>%
+  mutate(day_of = as.Date(mdy_hm(publish_date), format = "%d")) %>% 
+  filter(day_of >= as.Date("2015-06-16") & day_of <= as.Date("2018-01-20"))
 
-# None of the above storage methods worked. Will continue to check out 
-# different options.
-troll_clean <- read_rds("troll_clean.rds")
-
-
-# Plotting the use of the term fake news. First tweeted by Trump in January 2017.
-# This is my first example and use of telling a story with the data using phrases.
 
 # Function that creates a pretty theme for the histogram I will be displaying
 # Credit to Max Woolf: https://minimaxir.com/2015/02/ggplot-tutorial/
@@ -146,6 +132,28 @@ custom_theme <- function() {
     theme(plot.margin = unit(c(0.35, 0.2, 0.3, 0.35), "cm"))
 }
 
+
+## Plotting the daily tweets from the Russian troll data set to show
+## how it changed over time. Creating an image snapshot of this data
+## to be used in the website for better run times.
+daily_tweets <- function(){
+  troll_clean %>% 
+  ggplot(aes(day_of)) + 
+  geom_histogram(binwidth = 1, color = "#DD7848") +
+  labs(title = "Russian Troll Tweets by Day",
+       subtitle = "Nearly 3 million tweets sent by trolls associated with the Internet Research Agency",
+       x = "Date",
+       y = "# of Tweets") +
+  custom_theme() +
+  scale_y_continuous(label = ff_denom())
+  
+  ggsave(paste0("static/post/daily.png"), width = 9, height = 4.5, plot = last_plot(), device = "png", dpi = "retina")
+}
+
+# creating the picture for the website
+daily_tweets()
+
+
 ## Plotting some of the Trump administration's top catchphrases as the
 ## Russian trolls tweeted out during the election process. Need them in
 ## picture format because the Shiny app can't handle the huge data size
@@ -162,8 +170,10 @@ plot_phrase <- function(name, phrase){
     custom_theme() +
     scale_y_continuous(label = ff_denom())
   
-  ggsave(paste0("trolls_2016/", name, ".png"), width = 9, height = 4.5, plot = last_plot(), device = "png", dpi = "screen")
+  ggsave(paste0("static/post/", name, ".png"), width = 9, height = 4.5, plot = last_plot(), device = "png", dpi = "retina")
+  ggsave(paste0("/trolls_2016/", name, ".png"), width = 9, height = 4.5, plot = last_plot(), device = "png", dpi = "screen")
 }
+
 # creating output of pictures into the shiny app directory
 plot_phrase("fake_news", "fakenews|fake news")
 plot_phrase("hillary", "crooked hillary|crookedhillary")
@@ -171,10 +181,7 @@ plot_phrase("maga", "maga|make america great again")
 plot_phrase("nytimes", "failing new york times|nytimes")
 plot_phrase("trump", "trump")
 
-troll_clean %>% 
-  filter(str_detect(tolower(content), (paste("fakenews|fake news")))) %>%
-  count(day_of) %>% 
-  arrange(desc(n))
+
 # I chose the date range for this dataset to be from June 16th, 2015 to January 20th, 2018. 
 # June 16th, 2015 is when Trump first announced his candidacy for the US 2016 Presidential
 # election and I felt that it'd be best to show that as the start of the Russian tweets from
@@ -184,8 +191,14 @@ troll_clean %>%
 # 
 # Exporting the only data needed for the histogram to be able to export it to GitHub.
 tweets_daily <- troll_clean %>% 
-  select(day_of) %>% 
-  filter(day_of >= as.Date("2015-06-16") & day_of <= as.Date("2018-01-20"))
+  select(day_of) 
 
 write_rds(tweets_daily, "trolls_2016/tweets_daily.rds")  
+
+# ## Checking important dates and running a search to find out what events happened 
+# ## around this time to develop a description for the plot...
+# troll_clean %>% 
+#   filter(str_detect(tolower(content), (paste("fakenews|fake news")))) %>%
+#   count(day_of) %>% 
+#   arrange(desc(n))
 
