@@ -173,7 +173,8 @@ plot_phrase <- function(name, phrase){
   ggsave(paste0("trolls_2016/", name, ".png"), width = 9, height = 4.5, plot = last_plot(), device = "png", dpi = "screen")
 }
 
-# creating output of pictures into the shiny app directory
+# creating output of pictures into the shiny app directory and static web page directory
+# for use in these pages.
 plot_phrase("fake_news", "fakenews|fake news")
 plot_phrase("hillary", "crooked hillary|crookedhillary")
 plot_phrase("maga", "maga|make america great again")
