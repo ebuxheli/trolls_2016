@@ -196,8 +196,8 @@ write_rds(tweets_daily, "trolls_2016/tweets_daily.rds")
 
 # ## Checking important dates and running a search to find out what events happened 
 # ## around this time to develop a description for the plot...
-# troll_clean %>% 
-#   filter(str_detect(tolower(content), (paste("fakenews|fake news")))) %>%
-#   count(day_of) %>% 
+# troll_clean %>%
+#   #filter(str_detect(tolower(content), (paste("fakenews|fake news")))) %>%
+#   count(day_of) %>%
 #   arrange(desc(n))
 
