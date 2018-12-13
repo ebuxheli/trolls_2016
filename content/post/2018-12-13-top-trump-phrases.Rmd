@@ -17,17 +17,39 @@ library(tidyverse)
 Here I decided to take a look at some of Trump's most popular catchphrases as told by Russian trolls associated 
 with the IRA. If you want to learn more about the data here, please check out the [**About Page**](/about/) and 
 if you want to learn more about how I'm using the data, check out a [**previous post**](https://ebuxheli-russiantrolls.netlify.com/2018/12/03/daily-tweets/) on this data set.
-Meanwhile, I'm here to tell you some of the stories that the data shows! 
+Meanwhile, I'm here to tell you some of the stories the data helps to show! 
 
-
+### Crooked Hillary
 ```{r}
 # # Adding an image of the trump file
 knitr::include_graphics("/post/hillary.png")
+```
+
+### Fake News
+```{r}
+# # Adding an image of the trump file
 knitr::include_graphics("/post/fake_news.png")
+```
+
+### Make America Great Again (\#MAGA)
+```{r}
+# # Adding an image of the trump file
 knitr::include_graphics("/post/maga.png")
+```
+
+### The Failing New York Times
+```{r}
+# # Adding an image of the trump file
 knitr::include_graphics("/post/nytimes.png")
+```
+
+### And the man himself: TRUMP!
+```{r}
+# # Adding an image of the trump file
 knitr::include_graphics("/post/trump.png")
 ```
+
+
 
 ```{css}
 /* Ensuring that the image above dynamically fits the users screen using css. */
