@@ -2,7 +2,7 @@
 title: Top Trump Phrases
 author: ~
 date: '2018-12-05'
-slug: daily-tweets
+slug: top-trump-phrases
 categories: ["R"]
 tags: ["R Markdown", "plot", "regression"]
 ---

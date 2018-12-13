@@ -6,26 +6,26 @@
     <description>Recent content in Posts on Russian Trolls</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 12 Dec 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Trump</title>
-      <link>/2018/12/09/trump/</link>
-      <pubDate>Sun, 09 Dec 2018 00:00:00 +0000</pubDate>
+      <title>Black Lives Matter Tweets</title>
+      <link>/2018/12/12/black-lives-matter-tweets/</link>
+      <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/12/09/trump/</guid>
-      <description>knitr::include_graphics(&amp;quot;/post/trump.png&amp;quot;) </description>
+      <guid>/2018/12/12/black-lives-matter-tweets/</guid>
+      <description>After my analysis of daily Internet Research Agency (IRA) tweets and some of Trump’s more popular phrases, I felt that it was imperative to take a look at the mentions of the “Black Lives Matter” movement. This is because of the prominence of events that seem to be against this movement, especially during the Charlottesville Riots in mid-August of 2017. I thought it’d be interesting to see how the IRA trolls responded to these events and their mentions of the movement.</description>
     </item>
     
     <item>
       <title>Top Trump Phrases</title>
-      <link>/2018/12/05/daily-tweets/</link>
+      <link>/2018/12/05/top-trump-phrases/</link>
       <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/12/05/daily-tweets/</guid>
+      <guid>/2018/12/05/top-trump-phrases/</guid>
       <description>Here I decided to take a look at some of Trump’s most popular catchphrases as told by Russian trolls associated with the IRA. If you want to learn more about the data here, please check out the About Page and if you want to learn more about how I’m using the data, check out a previous post on this data set. Meanwhile, I’m here to tell you some of the stories the data helps to show!</description>
     </item>
     
