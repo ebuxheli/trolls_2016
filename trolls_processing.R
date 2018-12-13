@@ -179,6 +179,7 @@ plot_phrase("hillary", "crooked hillary|crookedhillary")
 plot_phrase("maga", "maga|make america great again")
 plot_phrase("nytimes", "failing new york times|nytimes")
 plot_phrase("trump", "trump")
+plot_phrase("blacklives", "black lives|blacklive|blm")
 
 
 # I chose the date range for this dataset to be from June 16th, 2015 to January 20th, 2018. 
