@@ -1,13 +1,13 @@
 ---
 title: Daily Tweets
 author: ~
-date: '2018-12'
+date: '2018-12-03'
 slug: daily-tweets
 categories: ["R"]
 tags: ["R Markdown", "plot", "regression"]
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, echo = FALSE, message = FALSE, warning = FALSE}
 knitr::opts_chunk$set(collapse = TRUE, echo = TRUE, warning = FALSE)
 
 library(dplyr)
