@@ -16,7 +16,7 @@ library(tidyverse)
 
 Here I decided to take a look at some of Trump's most popular catchphrases as told by Russian trolls associated 
 with the IRA. If you want to learn more about the data here, please check out the [**About Page**](/about/) and 
-if you want to learn more about how I'm using the data, check out a [**previous post**](2018/12/03/daily-tweets/) on this data set.
+if you want to learn more about how I'm using the data, check out a [**previous post**](https://ebuxheli-russiantrolls.netlify.com/2018/12/03/daily-tweets/) on this data set.
 Meanwhile, I'm here to tell you some of the stories that the data shows! 
 
 
