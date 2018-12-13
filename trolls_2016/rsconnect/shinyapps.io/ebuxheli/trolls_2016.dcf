@@ -5,8 +5,8 @@ account: ebuxheli
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 615854
-bundleId: 1760186
+bundleId: 1760199
 url: https://ebuxheli.shinyapps.io/trolls_2016/
-when: 1544685304.33157
+when: 1544685563.82123
 asMultiple: FALSE
 asStatic: FALSE
