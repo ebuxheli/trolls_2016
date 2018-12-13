@@ -26,7 +26,7 @@
       <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>/2018/12/03/daily-tweets/</guid>
-      <description># # Adding an image of the trump file knitr::include_graphics(&amp;quot;/post/daily.png&amp;quot;) /* Ensuring that the image above dynamically fits the users screen using css. */ img { width: 100%; height: auto; } /* Ensuring that the image above dynamically fits the users screen using css. */ img { width: 100%; height: auto; }  </description>
+      <description>/* Ensuring that the image above dynamically fits the users screen using css. */ img { width: 100%; height: auto; }  </description>
     </item>
     
     <item>

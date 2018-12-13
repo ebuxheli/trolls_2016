@@ -7,8 +7,8 @@ categories: ["R"]
 tags: ["R Markdown", "plot", "regression"]
 ---
 
-```{r setup, include=FALSE, echo = FALSE, message = FALSE, warning = FALSE}
-knitr::opts_chunk$set(collapse = TRUE, echo = TRUE, warning = FALSE)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, echo = FALSE, message = FALSE, warning = FALSE)
 
 library(dplyr)
 library(tidyverse)
