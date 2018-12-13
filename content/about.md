@@ -7,4 +7,4 @@ Hello! My name is Enxhi Buxheli and I am currently a junior at Harvard College c
 
 I hope that you enjoy this website and please reach out to me at **ebuxheli** at **college** dot **harvard** dot **edu** if you have any questions about the data or articles!
 
-If you would like to see an interactive version of the plots found in the article, head over to my [**Shiny App**](https://ebuxheli.shinyapps.io/russian_trolls/). If you are interested, here is a link to my old GitHub repo for this project prior to the creation of this 
+If you would like to see an interactive version of the plots found in the article, head over to my [**Shiny App**](https://ebuxheli.shinyapps.io/russian_trolls/).
