@@ -126,14 +126,7 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                          
                          # Show the twitter images
                          mainPanel(
-                           imageOutput("plot3"),
-                           p("In the \"Fake News\" tweets, we see a sudden spike in November of 
-                             2017 which was when investigations in the Russia probe became more intense."),
-                           br(),
-                           p("In the \"Make America Great Again\" tweets, we see a sudden spike 
-                             near the end of 2017. Upon closer look at events during this time, this 
-                             was a result of the violence and WhiteSupremacists in Charlottesville that 
-                             caught the nation's attention.")
+                           imageOutput("plot3")
                          )
                        )
               ),
