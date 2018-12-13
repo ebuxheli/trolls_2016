@@ -1,0 +1,42 @@
+---
+title: Top Trump Phrases
+author: ~
+date: '2018-12-05'
+slug: daily-tweets
+categories: ["R"]
+tags: ["R Markdown", "plot", "regression"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, echo = FALSE, message = FALSE, warning = FALSE)
+
+library(dplyr)
+library(tidyverse)
+```
+
+Here I decided to take a look at some of Trump's most popular catchphrases as told by Russian trolls associated 
+with the IRA. If you want to learn more about the data here, please check out the [**About Page**]()and I'm here to tell you some of 
+the stories that the data shows! 
+
+
+```{r}
+# # Adding an image of the trump file
+knitr::include_graphics("/post/hillary.png")
+knitr::include_graphics("/post/fake_news.png")
+knitr::include_graphics("/post/maga.png")
+knitr::include_graphics("/post/nytimes.png")
+knitr::include_graphics("/post/trump.png")
+```
+
+```{css}
+/* Ensuring that the image above dynamically fits the users screen using css. */
+img {
+  width: 100%;
+  height: auto;
+}
+```
+
+
+
+
+

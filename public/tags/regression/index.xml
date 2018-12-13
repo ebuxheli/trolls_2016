@@ -21,6 +21,16 @@
     </item>
     
     <item>
+      <title>Top Trump Phrases</title>
+      <link>/2018/12/05/daily-tweets/</link>
+      <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/12/05/daily-tweets/</guid>
+      <description>Here I decided to take a look at some of Trump’s most popular catchphrases as told by Russian trolls associated with the IRA. If you want to learn more about the data here, please check out the About Pageand I’m here to tell you some of the stories that the data shows!
+/* Ensuring that the image above dynamically fits the users screen using css. */ img { width: 100%; height: auto; }  </description>
+    </item>
+    
+    <item>
       <title>Daily Russian Tweets in the 2016 Presidential Election</title>
       <link>/2018/12/03/daily-tweets/</link>
       <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
@@ -28,17 +38,6 @@
       <guid>/2018/12/03/daily-tweets/</guid>
       <description>Throughout the 2016 US Presidential Election, Tweets were published by trolls associated with the Internet Research Agency (IRA) - a Russian entity. The IRA is believed to have been tasked with interfering in the 2016 US Presidential Election with their primary goal being to disseminate news and opinions in a way that motivated the spread of disinformation in a critical time in US politics.
 In 2016, the two primary candidates up for the US Presidency were Donald J.</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/2015/07/23/hello-r-markdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/2015/07/23/hello-r-markdown/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-# # Adding an image of the trump file knitr::include_graphics(&amp;quot;/post/trump.png&amp;quot;) /* Ensuring that the image above dynamically fits the users screen using css. */ img { width: 100%; height: auto; } /* Ensuring that the image above dynamically fits the users screen using css.</description>
     </item>
     
   </channel>
