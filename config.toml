@@ -15,6 +15,9 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 [[menu.main]]
     name = "GitHub"
     url = "https://github.com/ebuxheli/trolls_2016"
+[[menu.main]]
+    name = "Shiny"
+    url = "https://ebuxheli.shinyapps.io/russian_trolls/"
 
 [params]
     description = "Describing the actions of \"Russian trolls\" during the 2016 US Presidential Election"
