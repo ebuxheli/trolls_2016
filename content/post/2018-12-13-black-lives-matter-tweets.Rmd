@@ -29,6 +29,25 @@ mid-June of 2015 until a year after he took the office of the presidency.
 knitr::include_graphics("/post/blacklives.png")
 ```
 
+Sadly, I was unable to find a relevant historical event for the day with the highest number of 
+"Black Lives Matter" Tweets on March 31st, 2016. Additionally, I do not want to speculate what 
+the cause of this uptick was though I'd love to know (please contact me if you know the reason!).
+
+On the day with the second most Tweets on the topic, there was a movie released: "Stay Woke: The 
+Black Lives Matter Movement" starring Jesse Williams as it details the history of the movement
+and events that led to its prominence in American culture. Some of these events include the death
+of Trayvon Martin in Sanford, FL and Michael Brown in Ferguson, MO which led to unrest in Ferguson.
+
+Additionally, in retaliation to the Charlottesville white supremacists, we see a sharp spike in
+mentions of the movement in mid-August of 2017. 
+
+### My Thoughts on Trolls
+The trolls at the IRA were trying to find hot button issues to push on to spread their disinformation
+and general distrust towards government officials and they found that the "Black Lives Matter" movement
+helped to accomplish that goal. Whether the trolls were supportive of the Democratic party as they
+tried to fragment it from within and creating a divide among Hillary Clinton supporters and Bernie
+Sanders supports or if they voiced support towards the Republican party, they manipulated events
+in American society to advance their political agenda. 
 
 ```{css}
 /* Ensuring that the image above dynamically fits the users screen using css. */
