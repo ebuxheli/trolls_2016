@@ -15,9 +15,6 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 [[menu.main]]
     name = "GitHub"
     url = "https://github.com/ebuxheli/bdown_test"
-[[menu.main]]
-    name = "Twitter"
-    url = "https://twitter.com/EnxhiBuxheli"
 
 [params]
     description = "Describing the actions of \"Russian trolls\" during the 2016 US Presidential Election"
