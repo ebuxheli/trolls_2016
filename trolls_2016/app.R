@@ -139,7 +139,7 @@ ui <- fluidPage(theme = shinytheme("flatly"),
               ),
               
               # Tab with the initial histogram
-              tabPanel("Post-Mortem as of 12/5/2018",
+              tabPanel("Russian Trolls Website",
                        
                        # Sidebar with a slider input for number of bins 
                        sidebarLayout(
@@ -148,20 +148,13 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                          mainPanel(
                            p("What I've found is that the Tweets put out by accounts associated with 
                              the Russian trolls in the Internet Research Agency are reflective of some 
-                             of the events that were going on at the time of their publishing. I have 
-                             not yet gotten to explore the data in as much depth as I would like, but I 
-                             plan on looking at more variables. One of the challenges with such a large 
-                             dataset (almost 3 million entries with content of tweets included made for 
-                             massive files)."),
+                             of the events that were going on at the time of their publishing."),
                            br(),
-                           a("Here ", href = "https://fivethirtyeight.com/features/why-were-sharing-3-million-russian-troll-tweets/"),
-                           p("is a link to the original article published in collaboration with Clemson 
-                             University and FiveThirtyEight from which I drew inspiration. I plan on 
-                             making a blogdown that helps showcase the data in a better way. Additionally, "),
+                           p("Please check out my website to find a more in depth analysis of the data.
+                             Here you will find a refined data analysis for this project but without
+                             the same level of interactivity found here."),
                            br(),
-                           a("Here ", href = "https://github.com/fivethirtyeight/russian-troll-tweets/"),
-                           p("is a link to the original data set that I was working from compiled by FiveThirtyEight and Clemson.")
-                         
+                           a("Link to my website", href = "https://ebuxheli-russiantrolls.netlify.com/")
                          )
                        )
               )

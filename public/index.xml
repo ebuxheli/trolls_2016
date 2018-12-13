@@ -40,5 +40,14 @@ You can embed an R code chunk like this:
 # # Adding an image of the trump file knitr::include_graphics(&amp;quot;/post/trump.png&amp;quot;) /* Ensuring that the image above dynamically fits the users screen using css. */ img { width: 100%; height: auto; } /* Ensuring that the image above dynamically fits the users screen using css.</description>
     </item>
     
+    <item>
+      <title>Daily Tweets</title>
+      <link>/1/01/01/daily-tweets/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/1/01/01/daily-tweets/</guid>
+      <description># # Adding an image of the trump file knitr::include_graphics(&amp;quot;/post/daily.png&amp;quot;) /* Ensuring that the image above dynamically fits the users screen using css. */ img { width: 100%; height: auto; } /* Ensuring that the image above dynamically fits the users screen using css. */ img { width: 100%; height: auto; }  </description>
+    </item>
+    
   </channel>
 </rss>

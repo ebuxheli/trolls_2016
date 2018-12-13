@@ -13,8 +13,7 @@
 # different types of trolls on Twitter created for this Presidential Election.
 # 
 # mru: Enxhi Buxheli 12/12/2018 
-#   + cleaned up data processing
-#   + created website images
+#   + fixed image redirect
 
 
 # Attaching libraries
@@ -171,7 +170,7 @@ plot_phrase <- function(name, phrase){
     scale_y_continuous(label = ff_denom())
   
   ggsave(paste0("static/post/", name, ".png"), width = 9, height = 4.5, plot = last_plot(), device = "png", dpi = "retina")
-  ggsave(paste0("/trolls_2016/", name, ".png"), width = 9, height = 4.5, plot = last_plot(), device = "png", dpi = "screen")
+  ggsave(paste0("trolls_2016/", name, ".png"), width = 9, height = 4.5, plot = last_plot(), device = "png", dpi = "screen")
 }
 
 # creating output of pictures into the shiny app directory

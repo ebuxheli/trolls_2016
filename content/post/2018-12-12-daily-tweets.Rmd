@@ -1,0 +1,28 @@
+---
+title: Daily Tweets
+author: ~
+date: '2018-12'
+slug: daily-tweets
+categories: ["R"]
+tags: ["R Markdown", "plot", "regression"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, echo = TRUE, warning = FALSE)
+
+library(dplyr)
+library(tidyverse)
+```
+
+```{r cars}
+# # Adding an image of the trump file
+knitr::include_graphics("/post/daily.png")
+```
+
+```{css}
+/* Ensuring that the image above dynamically fits the users screen using css. */
+img {
+  width: 100%;
+  height: auto;
+}
+```
